@@ -21,7 +21,7 @@ def main():
   pygame.display.set_caption('Dominance')
   rotatePlatform = 0    # count when to rotate platform
   angle = 0
-  #xtemp = 
+  #xtemp = MAXWIDTH
   #ytemp = 
   # not game loop - loop for menu or start game over
   while 1:
