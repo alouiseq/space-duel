@@ -21,12 +21,11 @@ def main():
   pygame.display.set_caption('Dominance')
   rotatePlatform = 0    # count when to rotate platform
   angle = 0
-  #xtemp = MAXWIDTH
-  #ytemp = 
+  pygame.mixer.music.load('images_sound/sounds/ff7judgmentday.mid')    # initialize background music
+
   # not game loop - loop for menu or start game over
   while 1:
     # blit background to screen
-    #background = pygame.Surface(screen.get_size()).convert()
     xsize, ysize = screen.get_size()
     back = options.load_image('pyrobora.jpg', xsize, ysize)
     background = options.load_image('pyrobora.jpg', xsize, ysize)
@@ -38,14 +37,20 @@ def main():
     # introduce other platforms
     #nextPlat = options.load_image('earth.jpg', xtemp, ytemp)
     
-
-    
     # game menu returns game mode: 1-single, 2-multi, 3-controls 
-    mode = menu.game_menu(screen, backgroundRect)
-    if mode == 1:
-      playerType = 'Computer'
-    elif mode == 2:
-      playerType = 'Player2'
+    while 1:
+      pygame.mixer.music.stop()
+      mode = menu.game_menu(screen, backgroundRect)
+      if mode == 1:
+	playerType = 'Computer'
+        break
+      elif mode == 2:
+	playerType = 'Player2'
+        break
+      else:   # mode is 3
+	 menu.controls(screen, backgroundRect)
+
+    pygame.mixer.music.play(-1, 0.0)      # start background music
 
     # other initializations
     i = 1
@@ -353,9 +358,21 @@ def main():
       elif not shield_p2.sprite.timerStart:
         damage_p2 = damage_p2 - (.5 * len(collidedw_p2_lightning))
 
+      # sound effects and image due to collisions
+      explosionP1 = None
+      explosionP2 = None
+      if not shield_p1.sprite:
+	if collidedwith_p1 or collidedw_p1_missile or collidedw_p1_lightning:
+	  soundDamageHit.play()
+          explosionP1 = options.load_image('explosion.png', player1.size/5, player1.size/5)
+      if not shield_p2.sprite:
+	if collidedwith_p2 or collidedw_p2_missile or collidedw_p2_lightning:
+	  soundDamageHit.play()
+          explosionP2 = options.load_image('explosion.png', player2.size/5, player2.size/5)
+
       # collision with weapon fires
-      pygame.sprite.groupcollide(pellets_p1, missiles_p2, True, True)
-      pygame.sprite.groupcollide(pellets_p2, missiles_p1, True, True)
+      #pygame.sprite.groupcollide(pellets_p1, missiles_p2, True, True)
+      #pygame.sprite.groupcollide(pellets_p2, missiles_p1, True, True)
 
       # collision with items
       collidedw_items = pygame.sprite.groupcollide(pickups, players, False, False)
@@ -370,6 +387,7 @@ def main():
 	  if i <= 2:
 	    item.equipped(i)
 	    itemsP2.add(item)
+            soundPickup.play()
           if item.weapon == MISSILE:
 	    missiles_p2.add(missile.Missile(player2, player1))
           elif item.weapon == LIGHTNING:
@@ -385,6 +403,7 @@ def main():
 	  if i <= 2:
 	    item.equipped(i)
 	    itemsP1.add(item)
+            soundPickup.play()
           if item.weapon == MISSILE:
 	    missiles_p1.add(missile.Missile(player1, player2))
           elif item.weapon == LIGHTNING:
@@ -420,6 +439,11 @@ def main():
       players.draw(screen) 
       pellets_p1.draw(screen)
       pellets_p2.draw(screen)
+      
+      if explosionP1:
+	screen.blit(explosionP1, (player1.rect.centerx, player1.rect.centery))
+      if explosionP2:
+	screen.blit(explosionP2, (player2.rect.centerx, player2.rect.centery))
 
       if shield_p1.sprite:
         if shield_p1.sprite.timerStart:

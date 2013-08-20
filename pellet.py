@@ -17,7 +17,6 @@ class Pellet(pygame.sprite.Sprite):
     self.rect = self.image.get_rect()
     #self.rect = self.rect.inflate(-(.5 * self.size), -(.5 * self.size))
     self.sound = options.load_sound('gunshot.wav')
-    self.sound.play()
     self.rect.centerx = tank.rect.x + (tank.size / 2)
     if self.side == 'top':
       self.rect.centery = tank.rect.bottom
@@ -32,6 +31,7 @@ class Pellet(pygame.sprite.Sprite):
       self.yposc += self.speed
     if self.side == 'bottom':
       self.yposc -= self.speed
+    soundPellet.play()
 
   def update(self):
     """Update the position of bullets and terminate out-of-bounds bullets."""

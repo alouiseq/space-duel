@@ -33,7 +33,7 @@ class Machine(pygame.sprite.Sprite):
       topleft = (initpos[0] - (self.size/2), initpos[1] - self.size-60)
       self.image = options.load_image('guard_back_flat.png', self.size, self.size+20, transparent=True)
     self.text_player = self.text_font.render(self.player, 1, WHITE)
-    # image & sound
+    # image
     self.rect = self.image.get_rect()
     #self.circle = pygame.draw.circle(self.image, GREEN, (self.rect.centerx, self.rect.centery), self.size/2)
     self.radius = self.size/2
@@ -43,7 +43,6 @@ class Machine(pygame.sprite.Sprite):
     self.rights = ['guard_right_rightup.png', 'guard_right_rightdown.png', 'guard_right_leftup.png', 'guard_right_flat.png'] 
     self.downs = ['guard_front_leftup.png', 'guard_front_flat.png', 'guard_front_rightup.png', 'guard_front_flat.png']
     self.ups = ['guard_back_leftup.png', 'guard_back_flat.png', 'guard_back_rightup.png', 'guard_back_flat.png']
-    # sound = options.load_sound('changeme')
 
   def _text(self, screen):
     """Blitting player text and damage onto screen.

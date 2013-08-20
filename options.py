@@ -33,11 +33,13 @@ def game_winner(side, screen, screen_rect, mode):
     else:    # multiplayer mode
       winner = 'Player 2'
     area = screen_rect.top + 100
+  soundWin.play()
   fontSize = 80
   winner_font = pygame.font.Font(None, fontSize)
   winner_disp = winner_font.render(winner + ' wins!', 1,  WHITE)
   screen.blit(winner_disp, (screen_rect.centerx-(((fontSize/2)*len(winner))/2), screen_rect.centery-(fontSize/2)))
   pygame.display.update()
+  pygame.mixer.music.stop()
   play_again()
 
 
@@ -50,7 +52,7 @@ def load_image(image_file, xsize, ysize, side=None, transparent=False):
   side: side of player on screen
   Returns image surface.
   """
-  dir_data = '/Users/aquiatchon/Dropbox/Projects/Dominance/images_sound'
+  dir_data = 'images_sound/images'
   try:
     image_data = os.path.join(dir_data, image_file)
     imageinit = pygame.image.load(image_data)

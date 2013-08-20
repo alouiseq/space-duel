@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+from globvars import *
 import pellet
 import options
 
@@ -22,6 +23,7 @@ class Shield(pygame.sprite.Sprite):
     if self.timerStart:
       self.rect.centerx = self.tank.rect.centerx
       self.rect.centery = self.tank.rect.centery + 13
+      soundShield.play()
       if self.time > 200:
         self.kill()
       self.time += 1

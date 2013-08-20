@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+from globvars import *
 import pellet
 import options
 import math
@@ -35,6 +36,7 @@ class Missile(pellet.Pellet):
       self.yposc += self.speed
     if self.side == 'bottom':
       self.yposc -= self.speed
+    soundMissile.play()
     
   def update(self):
     """Update the position of missiles and terminate out-of-bounds missiles."""

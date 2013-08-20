@@ -80,4 +80,49 @@ def game_menu(screen, backgroundRect):
     pygame.display.update()
 
 
+def controls(screen, backgroundRect):
+  fontSize = 40
+  offset = 30
+  controlsFont = pygame.font.Font(None, fontSize)
 
+  while 1:
+    screen.fill(BLACK)
+    controlsSurface = controlsFont.render('MISSION: The goal is to defeat your opponent by using items picked up.', 1, WHITE)
+    screen.blit(controlsSurface, (0, backgroundRect.y))
+    controlsSurface = controlsFont.render('First one to get to an item\'s location takes that item.', 1, WHITE)
+    screen.blit(controlsSurface, (fontSize*3, backgroundRect.y+offset))
+    offset += 50
+    controlsSurface = controlsFont.render('CONTROL KEYS:', 1, WHITE)
+    screen.blit(controlsSurface, (0, backgroundRect.y+offset))
+    offset += 30
+    controlsSurface = controlsFont.render('Top Player:', 1, WHITE)
+    screen.blit(controlsSurface, (0, backgroundRect.y+offset))
+    offset += 30
+    controlsSurface = controlsFont.render('Navigate: mouse cursor', 1, WHITE)
+    screen.blit(controlsSurface, (0, backgroundRect.y+offset))
+    offset += 30
+    controlsSurface = controlsFont.render('1st item: j, 2nd item: k, 3rd item: l', 1, WHITE)
+    screen.blit(controlsSurface, (0, backgroundRect.y+offset))
+    offset += 30
+    controlsSurface = controlsFont.render('basic pellet fire: mouse click', 1, WHITE)
+    screen.blit(controlsSurface, (0, backgroundRect.y+offset))
+    offset += 50
+    controlsSurface = controlsFont.render('Bottom Player:', 1, WHITE)
+    screen.blit(controlsSurface, (0, backgroundRect.y+offset))
+    offset += 30
+    controlsSurface = controlsFont.render('Navigate: arrow keys', 1, WHITE)
+    screen.blit(controlsSurface, (0, backgroundRect.y+offset))
+    offset += 30
+    controlsSurface = controlsFont.render('1st item: a, 2nd item: s, 3rd item: d', 1, WHITE)
+    screen.blit(controlsSurface, (0, backgroundRect.y+offset))
+    offset += 30
+    controlsSurface = controlsFont.render('basic pellet fire: spacebar', 1, WHITE)
+    screen.blit(controlsSurface, (0, backgroundRect.y+offset))
+    offset += 30
+    offset = 30    # reset offset
+    pygame.display.update()
+
+    for e in pygame.event.get():
+      if e.type == KEYDOWN:
+        if e.key == K_ESCAPE or e.key == K_RETURN:
+          return

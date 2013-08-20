@@ -24,6 +24,7 @@ class Lightning(pellet.Pellet):
     self.state = 'alive'
     self.rect.centerx = self.enemy.rect.centerx
     self.rect.centery = self.enemy.rect.centery
+    soundLightning.play()
 
   def update(self, screen):
     """Update the time and visibility of the lightning weapon."""
