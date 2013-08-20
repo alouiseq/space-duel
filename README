@@ -1,8 +1,8 @@
-Two player battle on a planet in space to to the end. 
+Two players battle on a planet in space until one player wins. 
 Space duel can be played in single-player or multiplayer mode.
 
 - In single-player, player (bottom) duels computer AI (top).
-- In multiplayer, two players battle using the same machine.
+- In multiplayer, two players battle using the same computer system.
 
 The objective is to pick up items before the other player and use those items' to defeat your opponent.
 
