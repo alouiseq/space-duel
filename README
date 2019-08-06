@@ -1,3 +1,4 @@
+# Space Duel
 Two players battle on a planet in space until one player wins. 
 Space duel can be played in single-player or multiplayer mode.
 
@@ -7,3 +8,6 @@ Space duel can be played in single-player or multiplayer mode.
 The objective is to pick up items before the other player and use those items' to defeat your opponent.
 
    (Future expansion to come)
+
+### Stack
+Python, Pygame
