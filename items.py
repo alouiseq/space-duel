@@ -70,24 +70,24 @@ class Items(pygame.sprite.Sprite):
     if self.slot == 0:
       if self.side == 'top':
         FREESLOTS2[0] = False
-	self.rect.y = 0 
+  self.rect.y = 0 
       elif self.side == 'bottom':
         FREESLOTS1[0] = False
-	self.rect.y = MAXHEIGHT/2
+  self.rect.y = MAXHEIGHT/2
     if self.slot == 1:
       if self.side == 'top':
         FREESLOTS2[1] = False
-	self.rect.y = self.size 
+  self.rect.y = self.size 
       elif self.side == 'bottom':
         FREESLOTS1[1] = False
-	self.rect.y = MAXHEIGHT/2 + self.size
+  self.rect.y = MAXHEIGHT/2 + self.size
     if self.slot == 2:
       if self.side == 'top':
         FREESLOTS2[2] = False
-	self.rect.y = self.size * 2 
+  self.rect.y = self.size * 2 
       elif self.side == 'bottom':
         FREESLOTS1[2] = False
-	self.rect.y = MAXHEIGHT/2 + (self.size * 2)
+  self.rect.y = MAXHEIGHT/2 + (self.size * 2)
 
   def assignSlot(self, index, player):
     if player == 'top':

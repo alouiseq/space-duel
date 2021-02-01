@@ -42,17 +42,17 @@ class Missile(pellet.Pellet):
     """Update the position of missiles and terminate out-of-bounds missiles."""
     if self.state == 'alive' or self.state == 'stale':
       if self.rect.centerx < self.enemy.rect.centerx:
-	self.xposc = self.speed
+  self.xposc = self.speed
       elif self.rect.centerx > self.enemy.rect.centerx:
-	self.xposc = -self.speed
+  self.xposc = -self.speed
       else:    # ==
-	self.xposc = 0
+  self.xposc = 0
       if self.rect.centery < self.enemy.rect.centery:
-	self.yposc = self.speed
+  self.yposc = self.speed
       elif self.rect.centery > self.enemy.rect.centery:
-	self.yposc = -self.speed
+  self.yposc = -self.speed
       else:    # ==
-	self.yposc = 0
+  self.yposc = 0
 
       self.rect.move_ip(self.xposc, self.yposc)
       #if self.side == 'top':
@@ -60,4 +60,4 @@ class Missile(pellet.Pellet):
       #if self.side == 'bottom':
       #	self.image = options.rotate_image(self.imageOrig, math.degrees(math.atan2(self.xposc, self.yposc)))
       if options.offEdges(self.rect):
-	self.kill()
+  self.kill()

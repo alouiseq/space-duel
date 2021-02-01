@@ -286,14 +286,14 @@ class Tank(pygame.sprite.Sprite):
       self.rect.right = backgroundRect.right
     if self.side == 'top':
       if self.rect.top < 0:
-	self.rect.top = 0
+  self.rect.top = 0
       if self.rect.bottom > MAXHEIGHT / 2:
-	self.rect.bottom = MAXHEIGHT / 2
+  self.rect.bottom = MAXHEIGHT / 2
     elif self.side == 'bottom':
       if self.rect.top < MAXHEIGHT / 2:
-	self.rect.top = MAXHEIGHT / 2
+  self.rect.top = MAXHEIGHT / 2
       if self.rect.bottom > MAXHEIGHT:
-	self.rect.bottom = MAXHEIGHT
+  self.rect.bottom = MAXHEIGHT
 
   def ai(self):
     """Artificial Intelligence that randomizes player's movements if player is computer."""
@@ -301,7 +301,7 @@ class Tank(pygame.sprite.Sprite):
     moveChoice = random.randint(0, 3)
     for stopMove in range(0,4):
       if stopMove != moveChoice:
-	moves[stopMove]('still') 
+  moves[stopMove]('still') 
     moves[moveChoice]('moving')
     
   def update(self, backgroundRect, screen, mode):
@@ -407,34 +407,34 @@ def main():
       countP1 += 1
       countP2 += 1
       for event in pygame.event.get():
-	if event.type == QUIT:
-	  sys.exit()
-	elif event.type == KEYDOWN:
-	  if event.key == K_ESCAPE:
-	    sys.exit()
-	  elif event.key == K_LEFT:
+  if event.type == QUIT:
+    sys.exit()
+  elif event.type == KEYDOWN:
+    if event.key == K_ESCAPE:
+      sys.exit()
+    elif event.key == K_LEFT:
             print 'test'
-	    player1.move_left('moving')
-	  elif event.key == K_RIGHT:
-	    player1.move_right('moving')
-	  elif event.key == K_UP:
-	    player1.move_up('moving')
-	  elif event.key == K_DOWN:
-	    player1.move_down('moving')
-	  elif event.key == K_SPACE:
-	    goshotsP1 = True
-	    countP1 = 10
-	elif event.type == KEYUP:
-	  if event.key == K_LEFT:
-	    player1.move_left('still')
-	  elif event.key == K_RIGHT:
-	    player1.move_right('still')
-	  elif event.key == K_UP:
-	    player1.move_up('still')
-	  elif event.key == K_DOWN:
-	    player1.move_down('still')
-	  elif event.key == K_SPACE:
-	    goshotsP1 = False
+      player1.move_left('moving')
+    elif event.key == K_RIGHT:
+      player1.move_right('moving')
+    elif event.key == K_UP:
+      player1.move_up('moving')
+    elif event.key == K_DOWN:
+      player1.move_down('moving')
+    elif event.key == K_SPACE:
+      goshotsP1 = True
+      countP1 = 10
+  elif event.type == KEYUP:
+    if event.key == K_LEFT:
+      player1.move_left('still')
+    elif event.key == K_RIGHT:
+      player1.move_right('still')
+    elif event.key == K_UP:
+      player1.move_up('still')
+    elif event.key == K_DOWN:
+      player1.move_down('still')
+    elif event.key == K_SPACE:
+      goshotsP1 = False
         if event.type == MOUSEMOTION and activeP2:
           #(x, y) = pygame.mouse.get_pos()
           #print 'mouse: ', (x, y)
@@ -449,25 +449,25 @@ def main():
 
 
       if goshotsP1 and countP1 == 10:
-	# ensure enough distance between bullets for visibility
-	pellets_p1.add(Pellet(player1))
-	countP1 = 0
+  # ensure enough distance between bullets for visibility
+  pellets_p1.add(Pellet(player1))
+  countP1 = 0
       if goshotsP2 and countP2 == 10:
-	pellets_p2.add(Pellet(player2))
-	countP2 = 0
+  pellets_p2.add(Pellet(player2))
+  countP2 = 0
 
       if playerType == 'Computer':
         activeP2 = False
-	# Artificial Intelligence
-	if i ==50:
-	  # AI moves with time delay
-	  player2.ai()
-	  # randomize shooting
-	  wait = random.randint(0,1)
-	  if wait:
-	    pellets_p2.add(Pellet(player2))
-	  i = 0
-	i += 1
+  # Artificial Intelligence
+  if i ==50:
+    # AI moves with time delay
+    player2.ai()
+    # randomize shooting
+    wait = random.randint(0,1)
+    if wait:
+      pellets_p2.add(Pellet(player2))
+    i = 0
+  i += 1
       elif playerType == 'Player2':
         activeP2 = True
 
@@ -503,7 +503,7 @@ def main():
         pellets_p1.empty()
         pellets_p2.empty()
         GAMEOVER = False
-	break
+  break
 
 
 if __name__ == '__main__':

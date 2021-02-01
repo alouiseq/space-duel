@@ -30,8 +30,8 @@ class Lightning(pellet.Pellet):
     """Update the time and visibility of the lightning weapon."""
     if self.state == 'alive' or self.state == 'stale':
       if self.duration == 50:
-	self.duration = 0
-	self.kill()
+  self.duration = 0
+  self.kill()
       self.rect.centerx = self.enemy.rect.centerx
       self.rect.centery = self.enemy.rect.centery
       self.duration += 1
